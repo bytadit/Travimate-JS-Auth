@@ -5,6 +5,7 @@
   "main": "api/index.js",
   "scripts": {
     "start": "node start.js",
+    "prod": "node api/index.js",
     "db:init": "npm run db:create && npm run db:migrate && npm run db:seed",
     "test": "echo \"Error: no test specified\" && exit 1",
     "sequelize": "sequelize --config api/config/config.json --migrations-path api/migrations",
@@ -29,6 +30,7 @@
     "dotenv": "^16.4.1",
     "express": "^4.18.2",
     "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.10.0",
     "nodemailer": "^6.9.8",
     "pg": "^8.11.3",
     "pg-hstore": "^2.3.4",
