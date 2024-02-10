@@ -15,8 +15,8 @@ dotenv.config();
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "bgsp_aditya@student.uns.ac.id",
-    pass: "kkxv jrgx ivfb zrdr",
+    user: process.env.EMAIL_SENDER,
+    pass: process.env.EMAIL_PASSWORD,
   },
 });
 
@@ -24,10 +24,10 @@ const transporter = nodemailer.createTransport({
 const generateResetToken = () => uuidv4();
 
 function sendVerificationEmail(user) {
-  const verificationLink = `http://localhost:8081/api/auth/verify-email?token=${user.emailVerificationToken}`;
+  const verificationLink = `${process.env.BASE_URL}/api/auth/verify-email?token=${user.emailVerificationToken}`;
 
   const mailOptions = {
-    from: "bgsp_aditya@student.uns.ac.id",
+    from: process.env.EMAIL_SENDER,
     to: user.email,
     subject: "Verifikasi Email",
     text: `Klik tautan berikut untuk memverifikasi email anda: ${verificationLink}`,

@@ -13,6 +13,7 @@ const options = {
     servers: [
       {
         url: "http://localhost:8081",
+        url: "https://travimate-be-23a5f582658d.herokuapp.com",
       },
     ],
   },
