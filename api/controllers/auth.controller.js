@@ -15,8 +15,8 @@ dotenv.config();
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: process.env.EMAIL_SENDER,
-    pass: process.env.EMAIL_PASSWORD,
+    user: 'travimate.synrgy@gmail.com',
+    pass: 'rurf lsps hnkj rtla',
   },
 });
 
@@ -27,7 +27,7 @@ function sendVerificationEmail(user) {
   const verificationLink = `${process.env.BASE_URL}/api/auth/verify-email?token=${user.emailVerificationToken}`;
 
   const mailOptions = {
-    from: process.env.EMAIL_SENDER,
+    from: 'travimate.synrgy@gmail.com',
     to: user.email,
     subject: "Verifikasi Email",
     text: `Klik tautan berikut untuk memverifikasi email anda: ${verificationLink}`,
