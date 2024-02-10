@@ -1,0 +1,59 @@
+{
+  "development": {
+    "username": "travimate",
+    "password": "travi1m!",
+    "port": "6432",
+    "database": "travimatedb",
+    "host": "143.198.213.140",
+    "dialect": "postgres",
+    "migrationStorage": "sequelize",
+    "migrationStorageTableName": "sequelize_meta",
+    "seederStorage": "sequelize",
+    "seederStorageTableName": "sequelize_data",
+    "define": {
+      "timestamps": true,
+      "underscored": true
+    },
+    "migrations": [
+      "api/migrations/*.js"
+    ]
+  },
+  "test": {
+    "username": "travimate",
+    "port": "6432",
+    "password": "travi1m!",
+    "database": "travimatedb",
+    "host": "143.198.213.140",
+    "dialect": "postgres",
+    "migrationStorage": "sequelize",
+    "migrationStorageTableName": "sequelize_meta",
+    "seederStorage": "sequelize",
+    "seederStorageTableName": "sequelize_data",
+    "define": {
+      "timestamps": true,
+      "underscored": true
+    },
+    "migrations": [
+      "api/migrations/*.js"
+    ]
+  },
+  "production": {
+    "username": "travimate",
+    "port": "6432",
+    "password": "travi1m!",
+    "database": "travimatedb",
+    "host": "143.198.213.140",
+    "dialect": "postgres",
+    "migrationStorage": "sequelize",
+    "migrationStorageTableName": "sequelize_meta",
+    "seederStorage": "sequelize",
+    "seederStorageTableName": "sequelize_data",
+    "define": {
+      "timestamps": true,
+      "underscored": true
+    },
+    "migrations": [
+      "api/migrations/*.js"
+    ]
+  }
+}
