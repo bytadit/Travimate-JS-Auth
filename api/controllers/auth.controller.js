@@ -15,8 +15,8 @@ dotenv.config();
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: 'travimate.synrgy@gmail.com',
-    pass: 'rurf lsps hnkj rtla',
+    user: "travimate.synrgy@gmail.com",
+    pass: "rurf lsps hnkj rtla",
   },
 });
 
@@ -27,7 +27,7 @@ function sendVerificationEmail(user) {
   const verificationLink = `${process.env.BASE_URL}/api/auth/verify-email?token=${user.emailVerificationToken}`;
 
   const mailOptions = {
-    from: 'travimate.synrgy@gmail.com',
+    from: "travimate.synrgy@gmail.com",
     to: user.email,
     subject: "Verifikasi Email",
     text: `Klik tautan berikut untuk memverifikasi email anda: ${verificationLink}`,
@@ -197,9 +197,16 @@ exports.signin = async (req, res) => {
       ? roles.map((role) => `ROLE_${role.name.toUpperCase()}`)
       : [];
 
-    const token = jwt.sign({ id: user.id }, config.secret, {
-      expiresIn: 8400, // 24 hours
-    });
+    const token = jwt.sign(
+      {
+        id: user.id,
+        authorities: authorities,
+      },
+      config.secret,
+      {
+        expiresIn: 8400, // 24 hours
+      }
+    );
 
     res.status(200).send({
       id: user.id,
