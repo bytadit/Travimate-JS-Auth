@@ -120,6 +120,26 @@
  *               type: array
  *               items:
  *                 $ref: '#components/schemas/User'
+ * /api/auth/me:
+ *   get:
+ *     summary: Melihat profil pribadi, dan mengecek apakah token expired
+ *     tags: [Authentication]
+ *     parameters:
+ *       - in: header
+ *         name: x-access-token
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: Token login user
+ *     responses:
+ *       200:
+ *         description: Informasi Login User
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#components/schemas/User'
  * /api/auth/verify-email?token={emailVerificationToken}:
  *   get:
  *     summary: Verifikasi email
