@@ -65,7 +65,7 @@ exports.forgotPassword = async (req, res) => {
     const resetLink = `http://localhost:8081/reset-password?token=${resetToken}`;
 
     const mailOptions = {
-      from: "bgsp_aditya@student.uns.ac.id",
+      from: "travimate.synrgy@gmail.com",
       to: user.email,
       subject: "Reset Password",
       text: `Anda menerima email ini karena mengajukan reset password. Tolong klik tautan berikut untuk mereset password akun anda: ${resetLink}`,
