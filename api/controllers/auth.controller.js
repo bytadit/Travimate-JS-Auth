@@ -20,8 +20,6 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-
-// Function to generate a unique reset token
 const generateResetToken = () => uuidv4();
 
 function sendVerificationEmail(user) {
