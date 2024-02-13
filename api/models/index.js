@@ -16,7 +16,7 @@ if (dbConfig.use_env_variable) {
   sequelize = new Sequelize(`${dbConfig.DB}`, `${dbConfig.USER}`, `${dbConfig.PASSWORD}`, {
     host: dbConfig.HOST, 
     dialect: 'postgres', 
-    port: '6432'
+    // port: '6432'
   });
 }
 

@@ -10,11 +10,13 @@ const verifyToken = (req, res, next) => {
 
   if (!token) {
     return res.status(403).send({
+      status: 403,
       message: "Token tidak tersedia!",
     });
   }
   if (invalidTokens.has(token)) {
     return res.status(401).send({
+      status: 401,
       message: "Token diblokir. Anda harus login dahulu!",
     });
   }
@@ -22,6 +24,7 @@ const verifyToken = (req, res, next) => {
   jwt.verify(token, config.secret, (err, decoded) => {
     if (err) {
       return res.status(401).send({
+        status: 401,
         message: "Token kadaluarsa! Silakan login kembali!",
       });
     }
@@ -44,11 +47,12 @@ const isAdmin = (req, res, next) => {
         }
       }
       res.status(403).send({
+        status: 403,
         message: "Akses Ditolak! Membutuhkan role admin!",
       });
     })
     .catch((error) => {
-      res.status(500).json({ message: "Terjadi kesalahan server internal!" });
+      res.status(500).json({ status: 500, message: "Terjadi kesalahan server internal!" });
     });
 };
 
@@ -59,6 +63,7 @@ const isUser = (req, res, next) => {
     next();
   } else {
     res.status(403).send({
+      status: 403,
       message: "Akses ditolak! Anda hanya dapat mengatur akun anda sendiri!",
     });
   }
@@ -69,19 +74,19 @@ const authCheck = (req, res, next) => {
   let token = req.headers["x-access-token"];
 
   if (!token) {
-    return res.status(401).json({ message: "Anda harus login terlebih dahulu!" });
+    return res.status(401).json({ status: 401, message: "Anda harus login terlebih dahulu!" });
   }
 
   jwt.verify(token, config.secret, (err, decoded) => {
     if (err) {
-      return res.status(401).json({ message: "Anda harus login terlebih dahulu!" });
+      return res.status(401).json({ status: 401, message: "Anda harus login terlebih dahulu!" });
     }
 
     // Fetch the user from the database if needed
     db.User.findByPk(decoded.id)
       .then((user) => {
         if (!user) {
-          return res.status(401).json({ message: "Anda harus login terlebih dahulu!" });
+          return res.status(401).json({ status: 401, message: "Anda harus login terlebih dahulu!" });
         }
 
         // Attach the user to the request object for further use if needed
@@ -89,7 +94,7 @@ const authCheck = (req, res, next) => {
         next();
       })
       .catch((error) => {
-        return res.status(500).json({ message: "Terjadi kesalahan server internal!" });
+        return res.status(500).json({ status: 500, message: "Terjadi kesalahan server internal!" });
       });
   });
 };

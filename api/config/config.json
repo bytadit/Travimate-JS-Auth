@@ -1,10 +1,9 @@
 {
   "development": {
-    "username": "travimate",
-    "password": "travi1m!",
-    "port": "6432",
+    "username": "postgres",
+    "password": "root",
     "database": "travimatedb",
-    "host": "143.198.213.140",
+    "host": "localhost",
     "dialect": "postgres",
     "migrationStorage": "sequelize",
     "migrationStorageTableName": "sequelize_meta",
